@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task-5</title>
+    <style>
+        .error {
+            color: red;
+        }
+
+        input.error, textarea.error {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <form onsubmit="return validate()">
+        <table>
+            <tr>
+                <td><label for="name">Name:</label></td>
+                <td><input id="name" type="text"></td>
+                <td><span id="msg1" class="error"></span></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input id="email" type="text"></td>
+                <td><span id="msg2" class="error"></span></td>
+            </tr>
+            <tr>
+                <td><label for="url">Website:</label></td>
+                <td><input id="url" type="text"></td>
+                <td><span id="msg3" class="error"></span></td>
+            </tr>
+            <tr>
+                <td><label for="msg">Message:</label></td>
+                <td><textarea id="msg" rows="5" cols="25"></textarea></td>
+                <td><span id="msg4" class="error"></span></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Submit</button></td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function validate() {
+            var input1 = document.getElementById("name");
+            var input2 = document.getElementById("email");
+            var input3 = document.getElementById("url");
+            var input4 = document.getElementById("msg");
+
+            var input1Value = input1.value;
+            var input2Value = input2.value;
+            var input3Value = input3.value;
+            var input4Value = input4.value;
+
+            var count = 0;
+
+            if (input1Value.length === 0) {
+                document.getElementById("msg1").innerText = "This field is required";
+                input1.classList.add("error");
+                count++;
+            } else {
+                document.getElementById("msg1").innerText = "";
+                input1.classList.remove("error");
+            }
+
+            var reg1 = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
+
+            if (!reg1.test(input2Value)) {
+                document.getElementById("msg2").innerText = "A valid email address is required";
+                input2.classList.add("error");
+                count++;
+            } else {
+                document.getElementById("msg2").innerText = "";
+                input2.classList.remove("error");
+            }
+
+            var reg2 = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
+            if (!reg2.test(input3Value)) {
+                document.getElementById("msg3").innerText = "A valid URL is required";
+                input3.classList.add("error");
+                count++;
+            } else {
+                document.getElementById("msg3").innerText = "";
+                input3.classList.remove("error");
+            }
+
+            if (input4Value.length === 0) {
+                document.getElementById("msg4").innerText = "This field is required";
+                input4.classList.add("error");
+                count++;
+            } else {
+                document.getElementById("msg4").innerText = "";
+                input4.classList.remove("error");
+            }
+
+            return count === 0;
+        }
+    </script>
+</body>
+</html>

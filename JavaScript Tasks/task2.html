@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Sorting</title>
+</head>
+<body>
+    <form>
+        <p>Enter a string to sort alphabetically:</p>
+        <input type="text" name="str" id="inputString">
+        <button type="button" onclick="sortString()">Sort</button>
+    </form>
+    <p>Sorted String:</p>
+    <p id="sortedResult"></p>
+
+    <script>
+        function sortString() {
+            var inputElement = document.getElementById("inputString");
+            var inputString = inputElement.value;
+
+            var sortedString = inputString.split('').sort().join('');
+
+            var sortedResultElement = document.getElementById("sortedResult");
+            sortedResultElement.textContent = sortedString;
+        }
+    </script>
+</body>
+</html>

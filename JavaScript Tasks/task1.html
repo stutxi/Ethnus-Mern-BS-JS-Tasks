@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task-1</title>
+</head>
+<body>
+    <form>
+        <p>Enter a number to reverse:</p>
+        <input type="number" name="num" id="inputNumber">
+        <button type="button" onclick="reverse()">Reverse</button>
+    </form>
+    <p>Reversed Number:</p>
+    <p id="result"></p>
+
+    <script>
+        function reverse() {
+            var input = Number(document.myform.num.value);
+            var sum = 0;
+            while (input > 0) {
+                sum = sum * 10 + input % 10;
+                input = Math.floor(input / 10);
+            }
+            document.getElementById("result").innerHTML = sum;
+        }
+    </script>
+</body>
+</html>
+

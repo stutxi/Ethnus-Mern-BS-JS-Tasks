@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Task-6</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <form id="registration-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name">
+                <small class="text-danger" id="name-error"></small>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email">
+                <small class="text-danger" id="email-error"></small>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password">
+                <small class="text-danger" id="password-error"></small>
+            </div>
+            <div class="form-group">
+                <label for="hobbies">Hobbies:</label>
+                <select class="form-control" id="hobbies" name="hobbies">
+                    <option value="" disabled selected></option>
+                    <option value="singing">Singing</option>
+                    <option value="dancing">Dancing</option>
+                </select>
+                <small class="text-danger" id="hobbies-error"></small>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-danger btn-block">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registration-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            validateForm();
+        });
+
+        function validateForm() {
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+  
+            validateInput(nameInput, 'Name is required');
+            validateInput(emailInput, 'Email is required');
+            validateInput(passwordInput, 'Password is required');
+        }
+
+        function validateInput(inputElement, errorMessage) {
+            if (!inputElement.value.trim()) {
+                inputElement.classList.add('is-invalid');
+                document.getElementById(inputElement.id + '-error').textContent = errorMessage;
+            } else {
+                inputElement.classList.remove('is-invalid');
+                document.getElementById(inputElement.id + '-error').textContent = '';
+            }
+        }
+    </script>
+</body>
+</html>

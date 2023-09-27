@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task-4</title>
+</head>
+<body>
+    <div>
+        <button onclick="showDate()">Show Date</button>
+        <p id="dateOutput"></p>
+    </div>
+
+    <div>
+        <button onclick="showTime()">Show Time</button>
+        <p id="timeOutput"></p>
+    </div>
+
+    <script>
+        function showDate() {
+            var currentDate = new Date();
+            var day = currentDate.getDate();
+            var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var month = monthNames[currentDate.getMonth()];
+            var year = currentDate.getFullYear();
+
+            document.getElementById("dateOutput").textContent = day + "/" + month + "/" + year;
+        }
+
+        function showTime() {
+            var currentTime = new Date();
+            document.getElementById("timeOutput").textContent = currentTime.toString();
+        }
+    </script>
+</body>
+</html>
